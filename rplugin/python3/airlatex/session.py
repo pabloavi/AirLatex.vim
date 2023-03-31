@@ -174,7 +174,7 @@ class AirLatexSession:
             projectPage = (await self.nvim.loop.run_in_executor(None, get))
             anim_status.cancel()
 
-            meta = re.search('<meta\s[^>]*name="prefetchedProjectsBlob"[^>]*>', projectPage.text) if projectPage.ok else None
+            meta = re.search('<meta\s[^>]*name="ol-prefetchedProjectsBlob"[^>]*>', projectPage.text) if projectPage.ok else None
             if not projectPage.ok or meta is None:
                 with tempfile.NamedTemporaryFile(delete=False) as f:
                     f.write(projectPage.text.encode())
